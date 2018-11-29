@@ -1,5 +1,9 @@
 const { expect } = require('chai')
-const { capsule, checkAmountOfNeighbours, regenerateCells, Comparator } = require('../')
+const { capsule, 
+    checkAmountOfNeighbours, 
+    regenerateCells, 
+    Comparator 
+} = require('../src/bacteria')
 
 const grid1 = [[1, 2], [1, 3], [1, 4]]
 const grid2 = [[2, 2], [2, 3], [3, 2], [3, 3]]
@@ -67,6 +71,11 @@ describe('Capsule Application - Bacteria', () => {
     it('An input will return a new array of live cells', () => {
         const finalQuestion = [[1, 2], [2, 2], [3, 2], [1000000001 ,1000000002], [1000000002 ,1000000002], [1000000003 ,1000000002]]
         const finalAnswer = [[2, 1], [2, 2], [2, 3], [1000000002 ,1000000001], [1000000002 ,1000000002], [1000000002 ,1000000003]]
+        expect(capsule(finalQuestion)).to.eql(finalAnswer)
+    })
+    it('An input will return a new array of live cells', () => {
+        const finalQuestion = [[2, 1], [2, 2], [2, 3], [1000000002 ,1000000001], [1000000002 ,1000000002], [1000000002 ,1000000003]]
+        const finalAnswer = [[1, 2], [2, 2], [3, 2], [1000000001 ,1000000002], [1000000002 ,1000000002], [1000000003 ,1000000002]]
         expect(capsule(finalQuestion)).to.eql(finalAnswer)
     })
 })
