@@ -1,6 +1,9 @@
 const { expect } = require('chai')
-const { capsule, checkAmountOfNeighbours } = require('../')
+const { capsule, checkAmountOfNeighbours, regenerateCells, Comparator } = require('../')
 
+const grid1 = [[1, 2], [1, 3], [1, 4]]
+const grid2 = [[2, 2], [2, 3], [3, 2], [3, 3]]
+const grid3 = [[1, 2], [1, 3], [1, 4], [1, 5]]
 const remainingCells = [[1, 2], [1, 3], [1, 4], [2, 1], [2, 2]]
 
 describe('Capsule Application - Bacteria', () => {
@@ -10,60 +13,60 @@ describe('Capsule Application - Bacteria', () => {
     
     // Checking the amount of neighbours for each cell 
     it('Returns the amount of neighbours of a specified cell', () => {
-        const singleCell = [[0, 0]]
+        const singleCell = [0, 0]
         expect(checkAmountOfNeighbours(singleCell, remainingCells)).to.equal(0)
     })
     it('Returns the amount of neighbours of a specified cell', () => {
-        const singleCell = [[1, 0]]
+        const singleCell = [1, 0]
         expect(checkAmountOfNeighbours(singleCell, remainingCells)).to.equal(1)
     })
     it('Returns the amount of neighbours of a specified cell', () => {
-        const singleCell = [[1, 1]]
+        const singleCell = [1, 1]
         expect(checkAmountOfNeighbours(singleCell, remainingCells)).to.equal(3)
     })
     it('Returns the amount of neighbours of a specified cell', () => {
-        const singleCell = [[2, 3]]
+        const singleCell = [2, 3]
         expect(checkAmountOfNeighbours(singleCell, remainingCells)).to.equal(4)
     })
 
-    // Checking if a cell has less then two neighbours and deleting them if so
-    it('Only returns the cells that have 2 or more neighbours', () => {
-        expect(capsule([[1,2], [1, 3], [1, 4]])).to.eql([[1, 3]])
+    
+    // Compare arrays within arrays and sort
+    it('Compare arrays within arrays and sort then into order', () => {
+        const array = [[1, 3], [1, 1], [1, 2]]
+        expect(array.sort(Comparator)).to.eql([[1, 1], [1, 2], [1, 3]])
     })
-    it('Only returns the cells that have 2 or more neighbours', () => {
-        const liveCells = [[1, 2], [3, 3], [8, 9]]
-        expect(capsule(liveCells)).to.eql([])
+    it('Compare arrays within arrays and sort then into order', () => {
+        const array = [[0, 3], [0, 11], [0, 2]]
+        expect(array.sort(Comparator)).to.eql([[0, 2], [0, 3], [0, 11]])
     })
-    it('Only returns the cells that have 2 or more neighbours', () => {
-        const liveCells = [[1,2], [1, 3], [1, 4], [8, 9]]
-        expect(capsule(liveCells)).to.eql([[1, 3]])
+    it('Compare arrays within arrays and sort then into order', () => {
+        const array = [[3, 2], [3, 3], [2, 2], [2, 3]]
+        expect(array.sort(Comparator)).to.eql([[2, 2], [2, 3], [3, 2], [3, 3]])
     })
-    it('Only returns the cells that have 2 or more neighbours', () => {
-        const liveCells = [[1, 3], [1, 4], [1, 5], [8, 9]]
-        expect(capsule(liveCells)).to.eql([[1, 4]])
+  
+    // Calculates the regeneration of dead cells
+    it('Cell regeneration to regenerate dead cells with 3 live neighbours', () => {
+        expect(regenerateCells(grid1)).to.eql([[0, 3], [2, 3]])
+    })
+    it('Cell regeneration to regenerate dead cells with 3 live neighbours', () => {
+        expect(regenerateCells(grid2)).to.eql(grid2)
+    })
+    it('Cell regeneration to regenerate dead cells with 3 live neighbours', () => {
+        const answer = [[0, 3], [0, 4], [2, 3], [2, 4]]
+        expect(regenerateCells(grid3)).to.eql(answer)
     })
 
-    // If the cell has 2 or 3 live neighbours it lives
-    it('Only returns the cells that have exactly 2 or 3 neighbours', () => {
-        const liveCells = [[1, 2], [1, 3], [1, 4], [1, 5], [1, 6], [1, 7] ]
-        expect(capsule(liveCells)).to.eql([[1, 3], [1, 4], [1, 5], [1, 6]])
+    // Final capsule result
+    it('An input will return a new array of live cells', () => {
+        const answer = [[0, 3], [1, 3], [2, 3]]
+        expect(capsule(grid1)).to.eql(answer)
     })
-    it('Only returns the cells that have exactly 2 or 3 neighbours', () => {
-        const liveCells = [[1, 2], [1, 3], [1, 4], [2, 4]]
-        expect(capsule(liveCells)).to.eql([[1, 3], [1, 4], [2, 4]])
+    it('An input will return a new array of live cells', () => {
+        expect(capsule(grid2)).to.eql(grid2)
     })
-    it('Only returns the cells that have exactly 2 or 3 neighbours', () => {
-        const liveCells = [[1, 2], [1, 3], [2, 2], [2, 3]]
-        expect(capsule(liveCells)).to.eql(liveCells)
-    })
-    
-    // Checking if a cell has more then three neighbours and deleting them if so
-    it('Cells with less then two neighbours and more then 3 will die', () => {
-        const liveCells = [[1, 2], [1, 3], [1, 4], [2, 2], [2, 3], [2, 4]]
-        expect(capsule(liveCells)).to.eql([[1, 2], [1, 4], [2, 2], [2, 4]])
-    })
-    it('Cells with less then two neighbours and more then 3 will die', () => {
-        const liveCells = [[1, 2], [1, 3], [1, 4], [1, 5], [2, 2], [2, 3], [2, 4], [2, 5]]
-        expect(capsule(liveCells)).to.eql([[1, 2], [1, 5], [2, 2], [2, 5]])
+    it('An input will return a new array of live cells', () => {
+        const finalQuestion = [[1, 2], [2, 2], [3, 2], [1000000001 ,1000000002], [1000000002 ,1000000002], [1000000003 ,1000000002]]
+        const finalAnswer = [[2, 1], [2, 2], [2, 3], [1000000002 ,1000000001], [1000000002 ,1000000002], [1000000002 ,1000000003]]
+        expect(capsule(finalQuestion)).to.eql(finalAnswer)
     })
 })
