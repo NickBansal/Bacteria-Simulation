@@ -52,10 +52,18 @@ describe('Capsule Application - Bacteria', () => {
         const liveCells = [[1, 2], [1, 3], [1, 4], [2, 4]]
         expect(capsule(liveCells)).to.eql([[1, 3], [1, 4], [2, 4]])
     })
+    it('Only returns the cells that have exactly 2 or 3 neighbours', () => {
+        const liveCells = [[1, 2], [1, 3], [2, 2], [2, 3]]
+        expect(capsule(liveCells)).to.eql(liveCells)
+    })
     
     // Checking if a cell has more then three neighbours and deleting them if so
-    it('Only returns the cells with less then two neighbours and more then 3', () => {
+    it('Cells with less then two neighbours and more then 3 will die', () => {
         const liveCells = [[1, 2], [1, 3], [1, 4], [2, 2], [2, 3], [2, 4]]
         expect(capsule(liveCells)).to.eql([[1, 2], [1, 4], [2, 2], [2, 4]])
+    })
+    it('Cells with less then two neighbours and more then 3 will die', () => {
+        const liveCells = [[1, 2], [1, 3], [1, 4], [1, 5], [2, 2], [2, 3], [2, 4], [2, 5]]
+        expect(capsule(liveCells)).to.eql([[1, 2], [1, 5], [2, 2], [2, 5]])
     })
 })

@@ -14,3 +14,4 @@ This sprint is set up using Javascript in Visual Studio Code and testing is done
 - [x] If a cell has less then two neighbours, it dies
 - [x] If a cell has 2 or 3 neighbours it lives
 - [x] If a cell has more then 4 neighbours it dies 
+- [] Any dead cell with exactly three live neighbours becomes a live cell again
