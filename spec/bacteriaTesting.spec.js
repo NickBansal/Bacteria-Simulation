@@ -4,7 +4,7 @@ const { bacteria,
     regenerateCells, 
     Comparator, 
     removeDuplicates, 
-} = require('../src/bacteria')
+} = require('../src/utils')
 
 const grid1 = [[1, 2], [1, 3], [1, 4]]
 const grid2 = [[2, 2], [2, 3], [3, 2], [3, 3]]

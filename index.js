@@ -1,7 +1,6 @@
-const { printNextGeneration } = require('./src/bacteria')
+const { printNextGeneration } = require('./src/utils')
 const grid = []
 
-process.stdout.write(`\n      ******************************************\n`)
 process.stdout.write('Please enter all your coordinates below, followed by \'end\'\n\n')
 process.stdin.on('data', (data) => {
     const newData = data.toString().trim()
