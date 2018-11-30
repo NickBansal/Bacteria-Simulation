@@ -18,3 +18,21 @@ This sprint is set up using Javascript in Visual Studio Code and testing is done
 - [x] Return a new array with live and regenerated cells only
 - [] Completed with standard input
 - [] Showcase on standard output
+
+## Instructions
+In order to get this working on your local machine please check if node is installed on your machine and then duplicate or fork this repository from https://github.com/NickBansal/Capsule-CRM
+
+
+Inside this new directory, install the required NPM packages:
+```js
+$ npm install
+```
+In the terminal rund the following command
+```js
+$ node index
+```
+The terminal will then instruct you to input coordinates followed by 'end'
+
+Input as many coordinates as you like - all irregular coordinates will be discounted.
+
+Finally the output will be shown on the terminal followed by 'end'
