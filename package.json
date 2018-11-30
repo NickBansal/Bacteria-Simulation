@@ -1,5 +1,5 @@
 {
-  "name": "CapsuleApplication",
+  "name": "BacteriaSimulation",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,7 +9,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
     "chai": "^4.2.0",
     "mocha": "^5.2.0",
     "readline": "^1.3.0"
