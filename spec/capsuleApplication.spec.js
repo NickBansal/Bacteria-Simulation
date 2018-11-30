@@ -1,5 +1,6 @@
 const { expect } = require('chai')
-const { capsule, 
+const { 
+    bacteria, 
     checkAmountOfNeighbours, 
     regenerateCells, 
     Comparator, 
@@ -11,9 +12,9 @@ const grid2 = [[2, 2], [2, 3], [3, 2], [3, 3]]
 const grid3 = [[1, 2], [1, 3], [1, 4], [1, 5]]
 const remainingCells = [[1, 2], [1, 3], [1, 4], [2, 1], [2, 2]]
 
-describe('Capsule Application - Bacteria', () => {
+describe('Bacteria Simulation', () => {
     it('Returns an empty array when passed an empty array', () => {
-        expect(capsule([])).to.eql([])
+        expect(bacteria([])).to.eql([])
     })
     
     // Checking the amount of neighbours for each cell 
@@ -68,22 +69,22 @@ describe('Capsule Application - Bacteria', () => {
         expect(removeDuplicates([1, 2, 1, 3, 1, 2, 3])).to.eql([1, 2, 3])
     })
 
-    // Final capsule result
+    // Final bacteria result
     it('An input will return a new array of live cells', () => {
         const answer = [[0, 3], [1, 3], [2, 3]]
-        expect(capsule(grid1)).to.eql(answer)
+        expect(bacteria(grid1)).to.eql(answer)
     })
     it('An input will return a new array of live cells', () => {
-        expect(capsule(grid2)).to.eql(grid2)
+        expect(bacteria(grid2)).to.eql(grid2)
     })
     it('An input will return a new array of live cells', () => {
         const finalQuestion = [[1, 2], [2, 2], [3, 2], [1000000001 ,1000000002], [1000000002 ,1000000002], [1000000003 ,1000000002]]
         const finalAnswer = [[2, 1], [2, 2], [2, 3], [1000000002 ,1000000001], [1000000002 ,1000000002], [1000000002 ,1000000003]]
-        expect(capsule(finalQuestion)).to.eql(finalAnswer)
+        expect(bacteria(finalQuestion)).to.eql(finalAnswer)
     })
     it('An input will return a new array of live cells', () => {
         const finalQuestion = [[2, 1], [2, 2], [2, 3], [1000000002 ,1000000001], [1000000002 ,1000000002], [1000000002 ,1000000003]]
         const finalAnswer = [[1, 2], [2, 2], [3, 2], [1000000001 ,1000000002], [1000000002 ,1000000002], [1000000003 ,1000000002]]
-        expect(capsule(finalQuestion)).to.eql(finalAnswer)
+        expect(bacteria(finalQuestion)).to.eql(finalAnswer)
     })
 })

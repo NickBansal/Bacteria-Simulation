@@ -1,6 +1,6 @@
 const checker = [[-1, -1], [0, -1], [1, -1], [-1, 0], [1, 0], [-1, 1], [0, 1], [1, 1]]
 
-const capsule = (grid) => {
+const bacteria = (grid) => {
     const result = []
     for (let i = 0; i < grid.length; i++) {
         let newGrid = grid.slice()
@@ -51,12 +51,27 @@ const Comparator = (a, b) => {
     return 0;
 }
 
+const printNextGeneration = grid => {
+    process.stdout.write(`\n`)
+    const outerArray = []
+    grid.forEach(item => {
+        outerArray.push(item.split(',').map(Number))
+    })
+    bacteria(outerArray).forEach(item => {
+        const newString = `${item[0]}, ${item[1]}`
+        process.stdout.write(`${newString}\n`)
+    })
+    process.stdout.write('end\n\n')
+    process.exit()
+}
+
 const removeDuplicates = array => Array.from(new Set(array.map(JSON.stringify)), JSON.parse)
 
 module.exports = {
-    capsule,
+    bacteria,
     checkAmountOfNeighbours,
     regenerateCells,
     Comparator, 
-    removeDuplicates
+    removeDuplicates, 
+    printNextGeneration
 }
