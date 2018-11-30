@@ -16,8 +16,8 @@ This sprint is set up using Javascript in Visual Studio Code and testing is done
 - [x] If a cell has more then 4 neighbours it dies 
 - [x] Any dead cell with exactly three live neighbours becomes a live cell again
 - [x] Return a new array with live and regenerated cells only
-- [] Completed with standard input
-- [] Showcase on standard output
+- [x] Completed with standard input
+- [x] Showcase on standard output
 
 ## Instructions
 In order to get this working on your local machine please check if node is installed on your machine and then duplicate or fork this repository from https://github.com/NickBansal/Capsule-CRM
