@@ -9,7 +9,7 @@ const capsule = (grid) => {
     const aliveCells = grid.filter((item, index) => result[index] === 2 || result[index] === 3)
     const regenCells = regenerateCells(grid)
     const newBacteria = [...aliveCells, ...regenCells]
-    const total = Array.from(new Set(newBacteria.map(JSON.stringify)), JSON.parse)
+    const total = removeDuplicates(newBacteria)
     return total.sort(Comparator)
 }
 
@@ -37,7 +37,7 @@ const regenerateCells = (grid) => {
             }
         })
     })
-    const total = Array.from(new Set(result.map(JSON.stringify)), JSON.parse)
+    const total = removeDuplicates(result)
     return total.sort(Comparator)
 }
 
@@ -49,11 +49,14 @@ const Comparator = (a, b) => {
         if (a[1] > b[1]) return 1;
     }
     return 0;
-  }
+}
+
+const removeDuplicates = array => Array.from(new Set(array.map(JSON.stringify)), JSON.parse)
 
 module.exports = {
     capsule,
     checkAmountOfNeighbours,
     regenerateCells,
-    Comparator
+    Comparator, 
+    removeDuplicates
 }
