@@ -1,5 +1,5 @@
-# Capsule CRM application 
-This is my application for Capsule CRM. The exercise was to create 'Game of Life' style code in Javascript. 
+# Bacteria Simulation
+This exercise creates 'Game of Life' code in Javascript. 
 
 The following rules needed to be applied:
 * Any live bacteria cell with fewer than two live neighbours dies, as if caused by under-population
@@ -24,7 +24,7 @@ In order to get this working on your local machine please check if node is insta
 ```js
 $ node -v
 ```
-and then duplicate or fork this repository from https://github.com/NickBansal/Capsule-CRM
+and then duplicate or fork this repository from https://github.com/NickBansal/Bacteria-Simulation
 
 
 Inside this new directory, install the required NPM packages:
