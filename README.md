@@ -15,7 +15,7 @@ This sprint is set up using Javascript in Visual Studio Code and testing is done
 - [x] If a cell has 2 or 3 neighbours it lives
 - [x] If a cell has more then 4 neighbours it dies 
 - [x] Any dead cell with exactly three live neighbours becomes a live cell again
-- [x] Return a new array with live and regenerated cells only
+- [x] Return a new array with live cells only
 - [x] Completed with standard input
 - [x] Showcase on standard output
 

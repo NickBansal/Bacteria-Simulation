@@ -8,9 +8,8 @@ const bacteria = (grid) => {
     }
     const aliveCells = grid.filter((item, index) => result[index] === 2 || result[index] === 3)
     const regenCells = regenerateCells(grid)
-    const newBacteria = [...aliveCells, ...regenCells]
-    const total = removeDuplicates(newBacteria)
-    return total.filter(item => item[0] >= 0 && item[1] >= 0).sort(Comparator)
+    return removeDuplicates([...aliveCells, ...regenCells])
+    .filter(item => item[0] >= 0 && item[1] >= 0).sort(Comparator)
 }
 
 const checkAmountOfNeighbours = (singleCell, remainingCells)  => {
@@ -37,8 +36,7 @@ const regenerateCells = (grid) => {
             }
         })
     })
-    const total = removeDuplicates(result)
-    return total.sort(Comparator)
+    return removeDuplicates(result).sort(Comparator)
 }
 
 const Comparator = (a, b) => {
