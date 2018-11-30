@@ -1,7 +1,7 @@
 const { capsule } = require('./src/bacteria')
 const grid = []
 
-process.stdout.write(`\n******************************************\n\n`)
+process.stdout.write(`\n      ******************************************\n`)
 process.stdout.write('Please enter all your coordinates below, followed by \'end\'\n\n')
 process.stdin.on('data', (data) => {
     const newData = data.toString().trim()

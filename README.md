@@ -20,7 +20,11 @@ This sprint is set up using Javascript in Visual Studio Code and testing is done
 - [x] Showcase on standard output
 
 ## Instructions
-In order to get this working on your local machine please check if node is installed on your machine and then duplicate or fork this repository from https://github.com/NickBansal/Capsule-CRM
+In order to get this working on your local machine please check if node is installed on your machine by using the command into your terminal
+```js
+$ node -v
+```
+and then duplicate or fork this repository from https://github.com/NickBansal/Capsule-CRM
 
 
 Inside this new directory, install the required NPM packages:
