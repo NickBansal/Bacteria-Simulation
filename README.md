@@ -27,7 +27,7 @@ Inside this new directory, install the required NPM packages:
 ```js
 $ npm install
 ```
-In the terminal rund the following command
+In the terminal run the following command
 ```js
 $ node index
 ```
