@@ -1,10 +1,9 @@
 const { expect } = require('chai')
-const { 
-    bacteria, 
+const { bacteria, 
     checkAmountOfNeighbours, 
     regenerateCells, 
     Comparator, 
-    removeDuplicates
+    removeDuplicates, 
 } = require('../src/bacteria')
 
 const grid1 = [[1, 2], [1, 3], [1, 4]]

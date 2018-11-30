@@ -10,7 +10,7 @@ const bacteria = (grid) => {
     const regenCells = regenerateCells(grid)
     const newBacteria = [...aliveCells, ...regenCells]
     const total = removeDuplicates(newBacteria)
-    return total.sort(Comparator)
+    return total.filter(item => item[0] >= 0 && item[1] >= 0).sort(Comparator)
 }
 
 const checkAmountOfNeighbours = (singleCell, remainingCells)  => {
