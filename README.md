@@ -20,7 +20,7 @@ This sprint is set up using Javascript in Visual Studio Code and testing is done
 - [x] Showcase on standard output
 
 ## Instructions
-In order to get this working on your local machine please check if node is installed on your machine by using the command into your terminal
+In order to get this working on your local machine please check if node is installed by typing this command into your terminal
 ```js
 $ node -v
 ```
@@ -31,7 +31,7 @@ Inside this new directory, install the required NPM packages:
 ```js
 $ npm install
 ```
-In the terminal run the following command
+Whilst in the main directory, in the terminal run the following command
 ```js
 $ node index
 ```
@@ -40,3 +40,6 @@ The terminal will then instruct you to input coordinates followed by 'end'
 Input a coordinate and hit enter - input as many coordinates as you like - all irregular coordinates will be discounted.
 
 Finally the output will be shown in the terminal followed by 'end'
+
+## Author
+Nick Bansal 
