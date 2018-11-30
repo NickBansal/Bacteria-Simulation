@@ -33,6 +33,6 @@ $ node index
 ```
 The terminal will then instruct you to input coordinates followed by 'end'
 
-Input as many coordinates as you like - all irregular coordinates will be discounted.
+Input a coordinate and hit enter - input as many coordinates as you like - all irregular coordinates will be discounted.
 
-Finally the output will be shown on the terminal followed by 'end'
+Finally the output will be shown in the terminal followed by 'end'
