@@ -5,9 +5,10 @@ process.stdout.write(`\n      ******************************************\n`)
 process.stdout.write('Please enter all your coordinates below, followed by \'end\'\n\n')
 process.stdin.on('data', (data) => {
     const newData = data.toString().trim()
-    newData.toLowerCase() === 'end' ? process.exit() : grid.push(newData)
+    newData.toLowerCase() === 'end' ? printNextGeneration(grid) : grid.push(newData)
 })
-process.on('exit', () => {
+
+const printNextGeneration = grid => {
     process.stdout.write(`\n`)
     const outerArray = []
     grid.forEach(item => {
@@ -18,4 +19,5 @@ process.on('exit', () => {
         process.stdout.write(`${newString}\n`)
     })
     process.stdout.write('end\n\n')
-})
+    proces.exit()
+}
