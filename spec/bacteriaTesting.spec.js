@@ -1,9 +1,11 @@
 const { expect } = require('chai')
+const sinon = require('sinon')
 const { bacteria, 
     checkAmountOfNeighbours, 
     regenerateCells, 
     Comparator, 
     removeDuplicates, 
+    printNextGeneration
 } = require('../src/utils')
 
 const grid1 = [[1, 2], [1, 3], [1, 4]]
@@ -85,5 +87,12 @@ describe('Bacteria Simulation', () => {
         const finalQuestion = [[2, 1], [2, 2], [2, 3], [1000000002 ,1000000001], [1000000002 ,1000000002], [1000000002 ,1000000003]]
         const finalAnswer = [[1, 2], [2, 2], [3, 2], [1000000001 ,1000000002], [1000000002 ,1000000002], [1000000003 ,1000000002]]
         expect(bacteria(finalQuestion)).to.eql(finalAnswer)
+    })
+
+    it('Should call the printNextGeneration function', () => {
+        const consoleSpy = sinon.spy(console, 'log')
+        const grid = [ '1, 2', '1, 3', '1, 4' ]
+        console.log(printNextGeneration(grid))
+        expect(printNextGeneration().calledOnce).to.be.false;
     })
 })

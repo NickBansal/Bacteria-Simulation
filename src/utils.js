@@ -24,7 +24,6 @@ const checkAmountOfNeighbours = (singleCell, remainingCells)  => {
     return neighbours
 }
 
-
 const regenerateCells = (grid) => {
     const result = []
     grid.forEach(cell => {
@@ -50,6 +49,7 @@ const Comparator = (a, b) => {
 }
 
 const printNextGeneration = grid => {
+    console.log(grid)
     process.stdout.write(`\n`)
     const outerArray = []
     grid.forEach(item => {
