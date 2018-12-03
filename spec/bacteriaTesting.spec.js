@@ -68,6 +68,7 @@ describe('Bacteria Simulation', () => {
         expect(removeDuplicates([1, 1, 2, 3])).to.eql([1, 2, 3])
         expect(removeDuplicates([1, 2, 1, 3, 1])).to.eql([1, 2, 3])
         expect(removeDuplicates([1, 2, 1, 3, 1, 2, 3])).to.eql([1, 2, 3])
+        expect(removeDuplicates([[0, 0], [0, 1], [0, 0], [0 ,1]])).to.eql([[0, 0], [0, 1]])
     })
 
     // Final bacteria result

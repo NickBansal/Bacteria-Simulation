@@ -62,7 +62,11 @@ const printNextGeneration = grid => {
     process.exit()
 }
 
-const removeDuplicates = array => Array.from(new Set(array.map(JSON.stringify)), JSON.parse)
+const removeDuplicates = array => array.map(JSON.stringify)
+.reverse()
+.filter((value, index, array) => array.indexOf(value, index + 1) === -1)
+.reverse()
+.map(JSON.parse)
 
 module.exports = {
     formulateGrid,
