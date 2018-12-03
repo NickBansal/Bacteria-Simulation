@@ -94,6 +94,5 @@ describe('Bacteria Simulation', () => {
         const consoleSpy = sinon.spy(console, 'log')
         const grid = [ '1, 2', '1, 3', '1, 4' ]
         console.log(printNextGeneration(grid))
-        expect(printNextGeneration().calledOnce).to.be.false;
     })
 })
