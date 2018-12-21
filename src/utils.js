@@ -3,8 +3,7 @@ const checker = [[-1, -1], [0, -1], [1, -1], [-1, 0], [1, 0], [-1, 1], [0, 1], [
 const formulateGrid = (grid) => {
     const aliveCells = grid.filter(item => checkAmountOfNeighbours(item, grid) === 2 || checkAmountOfNeighbours(item, grid) === 3)
     const regenCells = regenerateCells(grid)
-    const combinationCells = [...aliveCells, ...regenCells]
-    return nextGenerationCells(combinationCells)
+    return nextGenerationCells([...aliveCells, ...regenCells])
 }
 
 const checkAmountOfNeighbours = (singleCell, remainingCells)  => {
@@ -22,11 +21,12 @@ const checkAmountOfNeighbours = (singleCell, remainingCells)  => {
 const regenerateCells = (grid) => {
     const result = []
     grid.forEach(cell => {
-        checker.forEach(item => {
+        checker.forEach(item => {2
             const xCoord = item[0] + cell[0]
             const yCoord = item[1] + cell[1]
-            if ((checkAmountOfNeighbours([xCoord, yCoord], grid)) === 3) {
-                result.push([xCoord, yCoord])
+            const newCoords = [xCoord, yCoord]
+            if ((checkAmountOfNeighbours(newCoords, grid)) === 3) {
+                result.push(newCoords)
             }
         })
     })

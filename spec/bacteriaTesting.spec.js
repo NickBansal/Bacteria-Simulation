@@ -1,6 +1,7 @@
 const { expect } = require('chai')
 const sinon = require('sinon')
-const { formulateGrid, 
+const { 
+    formulateGrid, 
     checkAmountOfNeighbours, 
     regenerateCells,
     printNextGeneration
@@ -19,28 +20,18 @@ describe('Bacteria Simulation', () => {
     
     // Checking the amount of neighbours for each cell 
     it('Returns the amount of neighbours of a specified cell', () => {
-        const singleCell = [0, 0]
-        expect(checkAmountOfNeighbours(singleCell, remainingCells)).to.equal(0)
+        expect(checkAmountOfNeighbours([0, 0], remainingCells)).to.equal(0)
+        expect(checkAmountOfNeighbours([1, 0], remainingCells)).to.equal(1)
+        expect(checkAmountOfNeighbours([1, 1], remainingCells)).to.equal(3)
+        expect(checkAmountOfNeighbours([2, 3], remainingCells)).to.equal(4)
     })
-    it('Returns the amount of neighbours of a specified cell', () => {
-        const singleCell = [1, 0]
-        expect(checkAmountOfNeighbours(singleCell, remainingCells)).to.equal(1)
-    })
-    it('Returns the amount of neighbours of a specified cell', () => {
-        const singleCell = [1, 1]
-        expect(checkAmountOfNeighbours(singleCell, remainingCells)).to.equal(3)
-    })
-    it('Returns the amount of neighbours of a specified cell', () => {
-        const singleCell = [2, 3]
-        expect(checkAmountOfNeighbours(singleCell, remainingCells)).to.equal(4)
-    })
-
     
     // Compare arrays within arrays and sort
     it('Compare arrays within arrays and sort then into order', () => {
         const array1 = [[1, 3], [1, 1], [1, 2]]
         const array2 = [[0, 3], [0, 11], [0, 2]]
         const array3 = [[3, 2], [3, 3], [2, 2], [2, 3]]
+        
         expect(array1.sort(sortArrayValues)).to.eql([[1, 1], [1, 2], [1, 3]])
         expect(array2.sort(sortArrayValues)).to.eql([[0, 2], [0, 3], [0, 11]])
         expect(array3.sort(sortArrayValues)).to.eql([[2, 2], [2, 3], [3, 2], [3, 3]])
@@ -58,19 +49,15 @@ describe('Bacteria Simulation', () => {
     it('An input will return a new array of live cells', () => {
         const answer = [[0, 3], [1, 3], [2, 3]]
         expect(formulateGrid(grid1)).to.eql(answer)
-    })
-    it('An input will return a new array of live cells', () => {
         expect(formulateGrid(grid2)).to.eql(grid2)
-    })
-    it('An input will return a new array of live cells', () => {
-        const finalQuestion = [[1, 2], [2, 2], [3, 2], [1000000001 ,1000000002], [1000000002 ,1000000002], [1000000003 ,1000000002]]
-        const finalAnswer = [[2, 1], [2, 2], [2, 3], [1000000002 ,1000000001], [1000000002 ,1000000002], [1000000002 ,1000000003]]
-        expect(formulateGrid(finalQuestion)).to.eql(finalAnswer)
-    })
-    it('An input will return a new array of live cells', () => {
-        const finalQuestion = [[2, 1], [2, 2], [2, 3], [1000000002 ,1000000001], [1000000002 ,1000000002], [1000000002 ,1000000003]]
-        const finalAnswer = [[1, 2], [2, 2], [3, 2], [1000000001 ,1000000002], [1000000002 ,1000000002], [1000000003 ,1000000002]]
-        expect(formulateGrid(finalQuestion)).to.eql(finalAnswer)
+
+        const finalQuestion2 = [[1, 2], [2, 2], [3, 2], [1000000001 ,1000000002], [1000000002 ,1000000002], [1000000003 ,1000000002]]
+        const finalAnswer2 = [[2, 1], [2, 2], [2, 3], [1000000002 ,1000000001], [1000000002 ,1000000002], [1000000002 ,1000000003]]
+        expect(formulateGrid(finalQuestion2)).to.eql(finalAnswer2)
+
+        const finalQuestion1 = [[2, 1], [2, 2], [2, 3], [1000000002 ,1000000001], [1000000002 ,1000000002], [1000000002 ,1000000003]]
+        const finalAnswer1 = [[1, 2], [2, 2], [3, 2], [1000000001 ,1000000002], [1000000002 ,1000000002], [1000000003 ,1000000002]]
+        expect(formulateGrid(finalQuestion1)).to.eql(finalAnswer1)
     })
 
     it('Should call the printNextGeneration function', () => {
