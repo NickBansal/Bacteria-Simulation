@@ -1,14 +1,10 @@
 const checker = [[-1, -1], [0, -1], [1, -1], [-1, 0], [1, 0], [-1, 1], [0, 1], [1, 1]]
 
 const formulateGrid = (grid) => {
-    const removeDuplicateValues = new Set()
     const aliveCells = grid.filter(item => checkAmountOfNeighbours(item, grid) === 2 || checkAmountOfNeighbours(item, grid) === 3)
     const regenCells = regenerateCells(grid)
-    const nextGenCells = [...aliveCells, ...regenCells]
-    nextGenCells.forEach(coords => {
-        removeDuplicateValues.add(`${coords[0]},${coords[1]}`)
-    })
-    return returnNewArray([...removeDuplicateValues])
+    const combinationCells = [...aliveCells, ...regenCells]
+    return nextGenerationCells(combinationCells)
 }
 
 const checkAmountOfNeighbours = (singleCell, remainingCells)  => {
@@ -25,7 +21,6 @@ const checkAmountOfNeighbours = (singleCell, remainingCells)  => {
 
 const regenerateCells = (grid) => {
     const result = []
-    const newSet = new Set()
     grid.forEach(cell => {
         checker.forEach(item => {
             const xCoord = item[0] + cell[0]
@@ -35,18 +30,21 @@ const regenerateCells = (grid) => {
             }
         })
     })
-    result.forEach(item => {
-        newSet.add(`${item[0]},${item[1]}`)
-    })
-    return returnNewArray([...newSet])
+    return nextGenerationCells(result)
 }
 
 const sortArrayValues = (a, b) => a[0] - b[0] !== 0 ? a[0] - b[0] : a[1] - b[1]
 
-const returnNewArray = array => array
-.map(item => item.split(',').map(Number))
-.filter(item => item[0] >= 0 && item[1] >= 0)
-.sort(sortArrayValues)
+const nextGenerationCells = array => {
+    const newSet = new Set()
+    array.forEach(item => {
+        newSet.add(`${item[0]},${item[1]}`)
+    })
+    return [...newSet].map(item => item.split(',')
+    .map(Number))
+    .filter(item => item[0] >= 0 && item[1] >= 0)
+    .sort(sortArrayValues)
+}
 
 const printNextGeneration = grid => {
     process.stdout.write(`\n`)
