@@ -3,8 +3,7 @@ const sinon = require('sinon')
 const { formulateGrid, 
     checkAmountOfNeighbours, 
     regenerateCells, 
-    sortArrayValues, 
-    removeDuplicates, 
+    sortArrayValues,
     printNextGeneration
 } = require('../src/utils')
 
@@ -61,14 +60,6 @@ describe('Bacteria Simulation', () => {
     it('Cell regeneration to regenerate dead cells with 3 live neighbours', () => {
         const answer = [[0, 3], [0, 4], [2, 3], [2, 4]]
         expect(regenerateCells(grid3)).to.eql(answer)
-    })
-
-    // Removing duplicates from arrays
-    it('Will find duplicates in an array and remove them', () => {
-        expect(removeDuplicates([1, 1, 2, 3])).to.eql([1, 2, 3])
-        expect(removeDuplicates([1, 2, 1, 3, 1])).to.eql([1, 2, 3])
-        expect(removeDuplicates([1, 2, 1, 3, 1, 2, 3])).to.eql([1, 2, 3])
-        expect(removeDuplicates([[0, 0], [0, 1], [0, 0], [0 ,1]])).to.eql([[0, 0], [0, 1]])
     })
 
     // Final bacteria result
