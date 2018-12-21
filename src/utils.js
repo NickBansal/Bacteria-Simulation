@@ -33,17 +33,14 @@ const regenerateCells = (grid) => {
     return nextGenerationCells(result)
 }
 
-const sortArrayValues = (a, b) => a[0] - b[0] !== 0 ? a[0] - b[0] : a[1] - b[1]
-
 const nextGenerationCells = array => {
     const newSet = new Set()
     array.forEach(item => {
         newSet.add(`${item[0]},${item[1]}`)
     })
-    return [...newSet].map(item => item.split(',')
-    .map(Number))
+    return [...newSet].map(item => item.split(',').map(Number))
     .filter(item => item[0] >= 0 && item[1] >= 0)
-    .sort(sortArrayValues)
+    .sort((a, b) => a[0] - b[0] !== 0 ? a[0] - b[0] : a[1] - b[1])
 }
 
 const printNextGeneration = grid => {
@@ -61,6 +58,5 @@ module.exports = {
     formulateGrid,
     checkAmountOfNeighbours,
     regenerateCells,
-    sortArrayValues, 
     printNextGeneration
 }
